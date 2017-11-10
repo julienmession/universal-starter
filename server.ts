@@ -38,9 +38,12 @@ app.engine('html', ngExpressEngine({
 app.set('view engine', 'html');
 app.set('views', join(DIST_FOLDER, 'browser'));
 
-/* - Example Express Rest API endpoints -
-  app.get('/api/**', (req, res) => { });
-*/
+// Express Rest API endpoints -
+app.get('/api/**', (req, res) => {
+  console.log(req.headers.hostname);
+  res.json({'myKey' : 'myValue'});
+});
+
 
 // Server static files from /browser
 app.get('*.*', express.static(join(DIST_FOLDER, 'browser'), {
