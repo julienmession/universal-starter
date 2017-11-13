@@ -2,14 +2,19 @@
   <img src="https://cloud.githubusercontent.com/assets/1016365/10639063/138338bc-7806-11e5-8057-d34c75f3cafc.png" alt="Universal Angular" height="320"/>
 </p>
 
-# Angular Universal Starter [![Universal Angular](https://img.shields.io/badge/universal-angular2-brightgreen.svg?style=flat)](https://github.com/angular/universal)
+# Evolution of the official Angular Universal Starter [![Universal Angular](https://img.shields.io/badge/universal-angular2-brightgreen.svg?style=flat)](https://github.com/angular/universal)
 > Server-Side Rendering for Angular
 
-A minimal Angular starter for Universal JavaScript using TypeScript and Webpack
+Add Transfer State, HTTPClient with basic caching and meta data management for SEO.
 
-> If you're looking for the Angular Universal repo go to [**angular/universal**](https://github.com/angular/universal)  
+Inspired by several interesting tutorials :
 
-[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
+Transfer State :
+https://medium.com/@evertonrobertoauler/angular-5-universal-with-transfer-state-using-angular-cli-19fe1e1d352c
+HTTPClient caching :
+https://angular.io/guide/http#caching
+meta-tag integraiton :
+https://coursetro.com/posts/code/68/Make-your-Angular-App-SEO-Friendly-(Angular-4-+-Universal)
 
 ## Getting Started
 
@@ -80,8 +85,6 @@ constructor(element: ElementRef, renderer: Renderer2) {
   this.renderer.setStyle(element.nativeElement, 'font-size', 'x-large');
 }
 ```
- - The application runs XHR requests on the server & once again on the Client-side (when the application bootstraps)
-    - Use a cache that's transferred from server to client (TODO: Point to the example)
  - Know the difference between attributes and properties in relation to the DOM.
  - Keep your directives stateless as much as possible. For stateful directives, you may need to provide an attribute that reflects the corresponding property with an initial string value such as url in img tag. For our native element the src attribute is reflected as the src property of the element type HTMLImageElement.
 
