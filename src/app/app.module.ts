@@ -12,6 +12,7 @@ import { HomeComponent } from './home/home.component';
     HomeComponent,
   ],
   imports: [
+    // .withServerTransition allows Universal to replace the HTML it generated on its own.
     BrowserModule.withServerTransition({appId: 'my-app'}),
     HttpClientModule,
     BrowserTransferStateModule,
@@ -21,7 +22,13 @@ import { HomeComponent } from './home/home.component';
       { path: 'lazy/nested', loadChildren: './lazy/lazy.module#LazyModule'}
     ])
   ],
-  providers: [],
+  providers: [
+  ],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+
+  constructor() {
+    
+  }
+}
