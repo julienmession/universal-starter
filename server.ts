@@ -28,19 +28,23 @@ import { ngExpressEngine } from '@nguniversal/express-engine';
 import { provideModuleMap } from '@nguniversal/module-map-ngfactory-loader';
 
 // Our Universal express-engine (found @ https://github.com/angular/universal/tree/master/modules/express-engine)
-app.engine('html', ngExpressEngine({
-  bootstrap: AppServerModuleNgFactory,
-  providers: [
-    provideModuleMap(LAZY_MODULE_MAP)
-  ]
-}));
+app.engine('html', (_, options, callback) => {
+  let engine = ngExpressEngine({
+    bootstrap: AppServerModuleNgFactory,
+    providers: [
+      provideModuleMap(LAZY_MODULE_MAP),
+      // provide the request in the server angular (need absolute URLs to perform get on domain)
+      { provide: 'request', useFactory: () => options.req, deps:[] }
+    ]
+  });
+  engine(_, options, callback);
+});
 
 app.set('view engine', 'html');
 app.set('views', join(DIST_FOLDER, 'browser'));
 
 // Express Rest API endpoints -
 app.get('/api/**', (req, res) => {
-  console.log(req.headers.hostname);
   res.json({'myKey' : 'myValue'});
 });
 
